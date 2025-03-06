@@ -29,6 +29,7 @@ namespace Minigame12{
         }
 
         public void ChangeRail(int index){
+            // ボタン入力直後、進行方向が切り替わる。
             float[] EndPos = new float[List_Change_Point.Count];
             EndPos = Array_ChoosedPos(index);
             for (int i=0;i<List_Change_Point.Count; i++){
@@ -37,6 +38,7 @@ namespace Minigame12{
         }
 
         private float[] Array_ChoosedPos(int index){
+            // 切り換えポイントの角度を進行方向に合わせて変更する。
             if (index == 0) return new float[] { 0, 24.0f };
             else if (index == 1) return new float[] { 0.0f, 0.0f };
             else return new float[] { -24.0f, 0 };
@@ -51,15 +53,18 @@ namespace Minigame12{
         }
 
         public void ResetTouched(){
+            // 正解した場合入力されていない最初の状態に戻る。
             isTouched = false;
         }
 
         public void ChangeButtonInteract(){
+            // ボタンにアタッチしたCanvasGroupのInteractableのオンオフを切り換える。
             isInteract = !isInteract;
             CG_Buttons.interactable = isInteract;
         }
 
         public int GetButtonNum(){
+            // GameManagerクラスに入力されたボタンの情報を送る。
             return index;
         }
     }
