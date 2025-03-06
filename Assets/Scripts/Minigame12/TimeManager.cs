@@ -27,6 +27,7 @@ namespace Minigame12{
         }
 
         public void ChangeTimeTextAlpha(){
+            // タイマー表示のオンオフをその都度切り換える。
             alpha_TextTime = 1 - alpha_TextTime;
             CG_TextTime.alpha = alpha_TextTime;
         }

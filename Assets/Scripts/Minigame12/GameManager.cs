@@ -49,12 +49,14 @@ namespace Minigame12{
                 );
                 cts?.Cancel();
 
+                // 入力後、電車の動きを画面上に流す。
                 ChangeGameMode();
                 await UniTask.Delay(TimeSpan.FromSeconds(0.2));
                 await MoveAnimation();
                 await UniTask.Delay(TimeSpan.FromSeconds(0.5));
                 List_CG_Star[count].alpha = 1;
 
+                // 正解すれば次の電車が出現する。失敗すればそこでゲームは終了となる。
                 if (isCorrect(answerNum)) {
                     buttonManager.ResetTouched();
                     ResetCancellationToken();
@@ -69,21 +71,25 @@ namespace Minigame12{
         }
 
         private async UniTask PrepareProcess(int answerNum){
+            // 電車の最初の動きを制御する。
             trainManager.ShowAnswerTrain(answerNum);
             await trainManager.PrepareTrain();
         }
 
         private async UniTask MoveAnimation(){
+            // 入力後の電車の動きを管理する。
             await trainManager.MovetoChangePoint();
             await trainManager.BranchTrainMove(buttonManager.GetButtonNum());
         }
 
         private void ChangeGameMode(){
+            // プレイヤーが入力できる・できないを制御する。
             timeManager.ChangeTimeTextAlpha();
             buttonManager.ChangeButtonInteract();
         }
 
         private bool isCorrect(int answerNum){
+            // 入力されたボタンが正解であるかを判定する。
             return buttonManager.GetButtonNum() == answerNum;
         }
 
