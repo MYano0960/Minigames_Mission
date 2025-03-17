@@ -31,4 +31,6 @@ Minigames_Missions
 ┗ README.md
 
 
-
+## クレジット
+Unity Engine (https://unity.com/ja)
+UniTask (https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask)
