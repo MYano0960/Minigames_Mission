@@ -65,6 +65,7 @@ namespace Minigame12{
                     break;
                 }
             }
+            await UniTask.Delay(TimeSpan.FromSeconds(0.2));
 
             if (isClear) CG_Clear.alpha = 1;
             else CG_Fail.alpha = 1;
